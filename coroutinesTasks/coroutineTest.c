@@ -19,13 +19,13 @@ void routineA()
 
   status = setjmp( bufferA );
   if( !status )
-    longjmp( bufferB, 20001 );
+    longjmp( bufferB, 1 );
 
   printf("(A3)\n");
 
   status = setjmp( bufferA );
   if( !status )
-    longjmp( bufferB, 20002 );
+    longjmp( bufferB, 1 );
 
   printf("(A4)\n");
 }
@@ -38,19 +38,19 @@ void routineB()
 
   status = setjmp( bufferB );
   if( !status )
-    longjmp( bufferA, 10001 );
+    longjmp( bufferA, 1 );
 
   printf("(B2)\n");
 
   status = setjmp( bufferB );
   if( !status )
-    longjmp( bufferA, 10002 );
+    longjmp( bufferA, 1 );
 
   printf("(B3)\n");
 
   status = setjmp( bufferB ); 
   if( !status )
-    longjmp( bufferA, 10003 );
+    longjmp( bufferA, 1 );
 }
 
 int main()
