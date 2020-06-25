@@ -3,19 +3,20 @@
 
 #include <setjmp.h>
 #include <vector>
+#include <memory>
 
+#include "CoroTask.h"
 
 class CoroScheduler
 {
 public:
   CoroScheduler();
   ~CoroScheduler();
-
-  void pushTask( jmp_buf* buf );
+  std::shared_ptr<CoroTask> getCoroTask();
 
 private:
-  std::vector<jmp_buf*> mTaskBuff;
-  jmp_buf               mSchedulerBuff;
+  std::vector<std::shared_ptr<CoroTask>> mCoroTaskArray;
+  jmp_buf                                mSchedulerBuff;
 };
 
 #endif // _SCHEDULER_H_

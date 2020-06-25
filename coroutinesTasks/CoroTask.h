@@ -2,18 +2,17 @@
 #define _CORO_TASK_H_
 
 #include <setjmp.h>
-
-#include "scheduler.h"
+#include <memory>
 
 class CoroTask
 {
 public:
-  CoroTask( const CoroScheduler& scheduler );
+  CoroTask( std::shared_ptr<jmp_buf> schedulerStack );
   ~CoroTask();
   void task_yuield();
 
 private:
-  CoroScheduler& mScheduler;
+  std::shared_ptr<jmp_buf> mScheduler;
   jmp_buf        mJmpBuf;
 };
 
