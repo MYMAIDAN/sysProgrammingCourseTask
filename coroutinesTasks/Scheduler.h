@@ -6,13 +6,14 @@
 #include <memory>
 
 #include "CoroTask.h"
-
+#include "CoroFunction.h"
 class CoroScheduler
 {
 public:
   CoroScheduler();
   ~CoroScheduler();
   std::shared_ptr<CoroTask> getCoroTask();
+  void Run( std::vector<CoroFunction>& coroFunctionVector );
 
 private:
   std::vector<std::shared_ptr<CoroTask>> mCoroTaskArray;

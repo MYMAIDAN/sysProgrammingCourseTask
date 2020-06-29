@@ -1,9 +1,8 @@
-cmake_minimum_required(VERSION 3.2 FATAL_ERROR)
+cmake_minimum_required ( VERSION 3.2 FATAL_ERROR )
+ 
+project( coroutineLibrary )
 
-project(coroutineLibrary)
+set( CMAKE_CXX_STANDART 17 )
+set( CMAKE_CXX_STANDART_REQUIRED ON )
 
-set(CMAKE_CXX_STANDART 17)
-set(CMAKE_CXX_STANDART_REQUIRED ON)
-
-
-add_executable( coroutime
+add_executable( coroutime Scheduler.h Scheduler.cpp  CoroFunction.h main.cpp )

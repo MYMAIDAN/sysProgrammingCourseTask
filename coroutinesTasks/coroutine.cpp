@@ -10,11 +10,18 @@ public:
   CoroFunction( FuncType function ):
     mFunctionWrapper( new FunctionWrapperImpl<FuncType>( function ) )
   {
-    static_cast<FunctionWrapperImpl<FuncType>*>(mFunctionWrapper)->mFunction();
+  }
+
+  void operator()()
+  {
+    mFunctionWrapper->operator()();
   }
 
   class FunctionBase
-  {};
+  {
+  public:
+    virtual void operator()() = 0;
+  };
 
   template <class T>
   class FunctionWrapperImpl: public FunctionBase
@@ -24,6 +31,12 @@ public:
       mFunction( function )
     {
     }
+
+    void operator()() override
+    {
+      mFunction();
+    }
+  private:
     T mFunction;
   };
 
@@ -41,8 +54,7 @@ void testFunction()
 int main()
 {
 
-  std::vector<CoroFunction> fmap;
-  fmap.emplace_back( testFunction );
-  fmap.emplace_back( testFunction );
+  CoroFunction fmap( testFunction );
+  fmap();
   return 0;
 }
