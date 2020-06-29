@@ -10,7 +10,6 @@ public:
     mFunctionWrapper( new FunctionWrapperImpl<FuncType>( function ) )
   {
   }
-  template <class FuncType>
   void operator()()
   {
     mFunctionWrapper->operator()();
