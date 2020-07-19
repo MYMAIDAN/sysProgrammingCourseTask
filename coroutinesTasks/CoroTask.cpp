@@ -11,9 +11,9 @@ CoroTask::~CoroTask()
   mScheduler.reset();
 }
 
-template <class ReturnType, class ... FunctionArgs>
+/*template <class ReturnType, class ... FunctionArgs>
 void CoroTask::setFunction( std::function<ReturnType( const CoroTask& coroTask, FunctionArgs... )> function )
 {
   function();
-}
+}*/
 
