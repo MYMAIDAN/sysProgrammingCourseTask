@@ -17,7 +17,7 @@ public:
 
 private:
   std::vector<std::shared_ptr<CoroTask>> mCoroTaskArray;
-  jmp_buf                                mSchedulerBuff;
+  std::shared_ptr<jmp_buf>               mSchedulerBuff;
 };
 
 #endif // _SCHEDULER_H_

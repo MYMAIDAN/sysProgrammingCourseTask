@@ -5,4 +5,4 @@ project( coroutineLibrary )
 set( CMAKE_CXX_STANDART 17 )
 set( CMAKE_CXX_STANDART_REQUIRED ON )
 
-add_executable( coro CoroTask.h CoroTask.cpp CoroFunction.h main.cpp)
+add_executable( coro Scheduler.cpp CoroTask.h CoroTask.cpp CoroFunction.h main.cpp)
